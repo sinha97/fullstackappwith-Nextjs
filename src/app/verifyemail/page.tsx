@@ -2,9 +2,11 @@
 
 import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 export default function VerifyEmailPage() {
+    const router = useRouter();
   const [token, setToken] = useState("");
   const [verified, setVerified] = useState(false);
   const [error, setError] = useState(false);
@@ -22,6 +24,10 @@ export default function VerifyEmailPage() {
   useEffect(() => {
     const urlToken = window.location.search.split("=")[1];
     setToken(urlToken || "");
+
+    // const {query}=router;
+    // const urlToken1=query.token;
+    // setToken(urlToken1 || "");
   }, []);
 
   useEffect(() => {
